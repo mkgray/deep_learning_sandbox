@@ -19,7 +19,7 @@ def forward(X, W1, b1, W2, b2):
     return Y
 
 def classification_rate(Y, P):
-    return float(np.sum(Y==P))/P.shape[0]
+    return np.mean(Y==P)
 
 if __name__ == "__main__":
     
@@ -32,12 +32,12 @@ if __name__ == "__main__":
     
     Y = np.array([0]*Nclass + [1]*Nclass + [2]*Nclass)
     
-    plt.scatter(X[:,0], X[:,1], c=Y, s=100, alpha=0.5)
+    plt.scatter(X[:,0], X[:,1], c=Y, s=5, alpha=0.5)
     plt.show()
     
-    D=2
-    M=3
-    K=3
+    D=2 # Number of dimensions
+    M=3 # Hidden layer size
+    K=3 # Number of classes
     
     W1 = np.random.randn(D, M)
     b1 = np.random.randn(M)
